@@ -6,6 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.ckunder.espressodemo.rules.OkHttpIdlingResourceRule
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -21,7 +22,7 @@ import java.util.concurrent.TimeUnit
 class MainActivityTest {
 
     @get:Rule
-    var rule = OkHttpIdlingResourceRule()
+    var rule = OkHttpIdlingResourceRule(InstrumentationRegistry.getInstrumentation().targetContext)
 
     private val mockWebServer = MockWebServer()
     private val portNumber = 8080
